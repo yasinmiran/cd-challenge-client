@@ -13,27 +13,28 @@ public class LogWriter {
     }
 
     public void writeLog(LogEntry entry) {
-        try {
-            URL url = new URL(endpointUrl);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setDoOutput(true);
-
-            String jsonInputString = "{\"log\": \"" + entry.toString() + "\"}";
-
-            try (OutputStream os = conn.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes("utf-8");
-                os.write(input, 0, input.length);
-            }
-
-            int responseCode = conn.getResponseCode();
-            System.out.println("POST Response Code :: " + responseCode);
-
-            conn.disconnect();
-        } catch (Exception e) {
-            System.err.println("Error in HTTP POST: " + e.getMessage());
-        }
+        System.out.println(entry.toString());
+//        try {
+//            URL url = new URL(endpointUrl);
+//            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+//            conn.setRequestMethod("POST");
+//            conn.setRequestProperty("Content-Type", "application/json");
+//            conn.setDoOutput(true);
+//
+//            String jsonInputString = "{\"log\": \"" + entry.toString() + "\"}";
+//
+//            try (OutputStream os = conn.getOutputStream()) {
+//                byte[] input = jsonInputString.getBytes("utf-8");
+//                os.write(input, 0, input.length);
+//            }
+//
+//            int responseCode = conn.getResponseCode();
+//            System.out.println("POST Response Code :: " + responseCode);
+//
+//            conn.disconnect();
+//        } catch (Exception e) {
+//            System.err.println("Error in HTTP POST: " + e.getMessage());
+//        }
     }
 
 }
